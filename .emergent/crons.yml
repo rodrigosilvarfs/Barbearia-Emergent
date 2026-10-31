@@ -1,0 +1,8 @@
+crons:
+  - name: whatsapp-reminders
+    description: "Envia os lembretes de WhatsApp (6h e 1h antes) dos agendamentos que venceram"
+    cron: "*/15 * * * *"
+    endpoint: "{{BASE_URL}}/api/cron/reminders"
+    method: POST
+    # Cron endpoints must ack 2xx immediately; enqueue/background the actual work.
+    enabled: true

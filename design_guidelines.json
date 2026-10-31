@@ -1,0 +1,163 @@
+{
+  "theme": "dark",
+  "app_name": "RPG Barbearia",
+  "locale": "pt-BR",
+  "typography": {
+    "font_family_heading": "Outfit, sans-serif",
+    "font_family_body": "DM Sans, sans-serif",
+    "font_family_mono": "JetBrains Mono, monospace",
+    "import_statements": [
+      "@import \"@fontsource-variable/outfit\";",
+      "@import \"@fontsource-variable/dm-sans\";",
+      "@import \"@fontsource-variable/jetbrains-mono\";"
+    ],
+    "scale_px": {
+      "display": 56,
+      "h1": 40,
+      "h2": 32,
+      "h3": 24,
+      "h4": 20,
+      "body": 16,
+      "caption": 14
+    }
+  },
+  "colors": {
+    "accent": "#D4AF37",
+    "on_accent": "#0A0A0A",
+    "accent_hover": "#E5C158",
+    "accent_muted": "rgba(212, 175, 55, 0.15)",
+    "surfaces": [
+      {
+        "name": "page",
+        "kind": "solid",
+        "bg": "#0B0C10",
+        "on_bg": "#F3F4F6",
+        "on_bg_muted": "#9CA3AF",
+        "roles": {
+          "border": "#1F242D",
+          "accent_gold": "#D4AF37",
+          "success": "#10B981",
+          "error": "#EF4444"
+        }
+      },
+      {
+        "name": "panel",
+        "kind": "solid",
+        "bg": "#12151C",
+        "on_bg": "#F9FAFB",
+        "on_bg_muted": "#A1A1AA",
+        "roles": {
+          "border": "#272E3B",
+          "highlight": "#D4AF37"
+        }
+      },
+      {
+        "name": "card_elevated",
+        "kind": "solid",
+        "bg": "#181D26",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#94A3B8",
+        "roles": {
+          "border": "#2E3846",
+          "active_border": "#D4AF37"
+        }
+      },
+      {
+        "name": "hero",
+        "kind": "image",
+        "contrast_against": "#0B0C10",
+        "guarantee": "scrim: linear-gradient(to bottom, rgba(11, 12, 16, 0.75) 0%, rgba(11, 12, 16, 0.95) 100%)",
+        "on_bg": "#FFFFFF",
+        "on_bg_muted": "#D1D5DB",
+        "roles": {
+          "link": "#D4AF37",
+          "badge": "#E5C158"
+        }
+      },
+      {
+        "name": "badge_gold",
+        "kind": "solid",
+        "bg": "rgba(212, 175, 55, 0.12)",
+        "on_bg": "#E5C158",
+        "on_bg_muted": "#D4AF37"
+      },
+      {
+        "name": "slot_available",
+        "kind": "solid",
+        "bg": "#151A22",
+        "on_bg": "#F3F4F6",
+        "on_bg_muted": "#9CA3AF"
+      },
+      {
+        "name": "slot_selected",
+        "kind": "solid",
+        "bg": "#D4AF37",
+        "on_bg": "#0A0A0A",
+        "on_bg_muted": "#1F242D"
+      }
+    ]
+  },
+  "entry_surfaces": {
+    "/": "split hero with luxury barber backdrop, gold tagline badge, instant booking wizard trigger and embedded 5-step quick flow",
+    "/barbeiro/login": "branded split login with dark leather aesthetic left, credential form right",
+    "/admin/login": "sleek minimalist admin login panel with champagne keyline accents"
+  },
+  "visual_enhancers": {
+    "theme_archetype": "Archetype 5: LUXURY & PERFORMANCE (Deep Obsidian + Champagne Gold Accent)",
+    "texture": "Subtle noise overlay with refined 1px gold/graphite border lines",
+    "border_radius": "rounded-xl for cards, rounded-lg for inputs and buttons (clean and modern, no aggressive pills)",
+    "glow_effects": "Subtle gold drop shadows on active steps: shadow-[0_0_20px_rgba(212,175,55,0.18)]"
+  },
+  "layouts": {
+    "booking_wizard": {
+      "steps": [
+        "1. Seleção de Barbeiro (com foto, especialidade, bio e badge de disponibilidade)",
+        "2. Seleção de Serviço (Corte, Barboterapia, Combo, Acabamento com duração em minutos e valor em R$)",
+        "3. Data & Horário (Calendário visual interativo + grade de slots de 30 min em tempo real)",
+        "4. Dados do Cliente (Nome completo + WhatsApp com máscara brasileira (XX) XXXXX-XXXX)",
+        "5. Resumo & Confirmação (Card estilo ingresso premium com status de agendamento e botão WhatsApp)"
+      ],
+      "mobile_optimized": true,
+      "sticky_bottom_bar": "Resumo dinâmico com botão de avançar etapa fixo no rodapé mobile"
+    },
+    "barber_portal": {
+      "tabs": ["Agenda de Hoje", "Visão Calendário (Dia/Semana/Mês)", "Histórico de Atendimentos"],
+      "quick_actions": ["Marcar Concluído", "Cancelar Agendamento", "Avisar Cliente"]
+    },
+    "admin_portal": {
+      "kpi_grid": "4 cards (Total do Dia, Próximos Atendimentos, Concluídos, Cancelamentos)",
+      "management_modules": [
+        "Gestão de Barbeiros (CRUD + Horários de Expediente, Folgas e Pausas/Intervalos)",
+        "Gestão de Serviços (CRUD + Preço R$, Tempo em minutos)",
+        "Gestão de Agendamentos (Tabela avançada com filtros por Barbeiro, Data, Status + Criação manual + Bloqueio de horários)",
+        "Log de Lembretes WhatsApp (Status de disparo simulado 6h e 1h antes)"
+      ]
+    }
+  },
+  "motion": {
+    "transitions": "transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease",
+    "step_transitions": "Framer motion slide horizontal with gentle fade (duration 0.25s)",
+    "card_hover": "hover:-translate-y-0.5 hover:border-[#D4AF37]/50"
+  },
+  "accessibility": {
+    "min_contrast": "4.5:1 on all text strings against dark canvas",
+    "data_testids": "Mandatory on all CTA buttons, inputs, tabs, wizard steps, and action triggers",
+    "keyboard_nav": "Full arrow key and tab support on slot selection and calendar days"
+  },
+  "image_urls": {
+    "hero_banner": "https://images.unsplash.com/photo-1536520002442-39764a41e987?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwxfHxiYXJiZXJzaG9wJTIwdmludGFnZXxlbnwwfHx8fDE3OTM0Nzg4NTR8MA&ixlib=rb-4.1.0&q=85",
+    "barbershop_facade": "https://images.unsplash.com/photo-1678356164573-9a534fe43958?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTN8MHwxfHNlYXJjaHwyfHxiYXJiZXJzaG9wJTIwdmludGFnZXxlbnwwfHx8fDE3OTM0Nzg4NTR8MA&ixlib=rb-4.1.0&q=85",
+    "barber_1_pedro": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHw0fHxiYXJiZXIlMjBoYWlyY3V0fGVufDB8fHx8MTc5MzQ3ODg1NHww&ixlib=rb-4.1.0&q=85",
+    "barber_2_lucas": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwyfHxiYXJiZXIlMjBoYWlyY3V0fGVufDB8fHx8MTc5MzQ3ODg1NHww&ixlib=rb-4.1.0&q=85",
+    "barber_3_rafael": "https://images.unsplash.com/photo-1647140655214-e4a2d914971f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwxfHxiYXJiZXIlMjBoYWlyY3V0fGVufDB8fHx8MTc5MzQ3ODg1NHww&ixlib=rb-4.1.0&q=85",
+    "barber_chair_ambiance": "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTJ8MHwxfHNlYXJjaHwzfHxiYXJiZXIlMjBoYWlyY3V0fGVufDB8fHx8MTc5MzQ3ODg1NHww&ixlib=rb-4.1.0&q=85"
+  },
+  "instructions_to_main_agent": [
+    "1. Adotar Dark Theme por padrão aplicando a classe 'dark' no html e fundo #0B0C10 com detalhes em ouro clássico/champagne #D4AF37.",
+    "2. Implementar fluxo em 5 etapas no cliente (Passo 1: Barbeiro -> Passo 2: Serviço -> Passo 3: Data e Horário em slots de 30m -> Passo 4: Nome e WhatsApp -> Passo 5: Confirmação com resumo de agendamento e link direto para WhatsApp).",
+    "3. Criar painel Barbeiro protegido por login com visualização de agendamentos do dia, alternador dia/semana/mês e ações de concluir/cancelar.",
+    "4. Criar painel Admin completo com CRUD de Barbeiros (com horários de trabalho, pausas e folgas), CRUD de Serviços, Tabela de Agendamentos com filtros múltiplos, bloqueio de horários e log de lembretes automáticos de WhatsApp (6h e 1h antes).",
+    "5. Formatação rigorosa em pt-BR (Moeda R$, datas em dd/MM/yyyy e telefone (XX) XXXXX-XXXX).",
+    "6. Todos os botões, campos de texto e itens de listagem devem possuir atributos data-testid claros."
+  ]
+}
