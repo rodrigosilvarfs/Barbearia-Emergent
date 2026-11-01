@@ -9,12 +9,12 @@ from models.schemas import default_schedule, new_id
 ADMIN = {"email": "admin@rpgbarbearia.com", "password": "admin123", "name": "Administrador"}
 BARBERS = [
     {
-        "name": "Pedro Alves", "email": "pedro@rpgbarbearia.com", "password": "barbeiro123",
+        "name": "Roberto", "email": "roberto@rpgbarbearia.com", "password": "barbeiro123",
         "bio": "Especialista em cortes clássicos e degradê navalhado.",
         "photo_url": "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&q=80&auto=format&fit=crop",
     },
     {
-        "name": "Lucas Martins", "email": "lucas@rpgbarbearia.com", "password": "barbeiro123",
+        "name": "Kauã", "email": "kaua@rpgbarbearia.com", "password": "barbeiro123",
         "bio": "Barboterapia, desenho de barba e acabamentos precisos.",
         "photo_url": "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&q=80&auto=format&fit=crop",
     },

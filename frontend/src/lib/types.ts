@@ -38,6 +38,17 @@ export interface BarberCreate {
 
 export type BarberUpdate = Partial<Omit<BarberCreate, "password">> & { password?: string };
 
+export interface DayHours {
+  weekday: number;
+  start: string;
+  end: string;
+}
+
+export interface MyScheduleUpdate {
+  hours: DayHours[];
+  days_off: string[];
+}
+
 export interface Service {
   id: string;
   name: string;

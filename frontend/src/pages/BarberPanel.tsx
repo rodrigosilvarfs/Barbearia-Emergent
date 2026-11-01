@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AgendaCalendar } from "@/components/AgendaCalendar";
 import { AppointmentItem } from "@/components/AppointmentItem";
 import { ConfirmDialog } from "@/components/ConfirmDialog";
+import { MyScheduleTab } from "@/components/MyScheduleTab";
 import { PanelShell } from "@/components/PanelShell";
 import { apiGet, apiPost } from "@/lib/api";
 import { errorMessage, fmtDateLong, useShopInfo } from "@/lib/format";
@@ -72,7 +73,10 @@ function BarberContent({ me }: { me: Me }) {
           <TabsTrigger value="upcoming" data-testid="barber-tab-upcoming">Próximos</TabsTrigger>
           <TabsTrigger value="calendar" data-testid="barber-tab-calendar">Calendário</TabsTrigger>
           <TabsTrigger value="history" data-testid="barber-tab-history">Histórico</TabsTrigger>
+          <TabsTrigger value="schedule" data-testid="barber-tab-schedule">Meus horários</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="schedule">{today && <MyScheduleTab today={today} />}</TabsContent>
 
         <TabsContent value="today">
           <List items={todays} loading={todayQ.isLoading} empty="Nenhum agendamento para hoje." onComplete={complete} onCancel={setToCancel} busy={action.isPending} />

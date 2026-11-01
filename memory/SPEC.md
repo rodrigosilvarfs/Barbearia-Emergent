@@ -5,7 +5,7 @@ Fuso: `APP_TZ=America/Sao_Paulo` — "hoje" sempre vem do servidor (`GET /api/pu
 
 ## Ambientes
 - **Cliente** `/` — wizard 5 etapas: barbeiro → serviço → data/horário (slots livres de 30 min) → nome + WhatsApp → resumo/confirmar.
-- **Barbeiro** `/barbeiro` — login; abas Hoje / Próximos / Calendário (dia/semana/mês) / Histórico; concluir/cancelar. Vê SÓ os próprios agendamentos.
+- **Barbeiro** `/barbeiro` — login; abas Hoje / Próximos / Calendário (dia/semana/mês) / Histórico / Meus horários (barbeiro altera início/término de cada dia de trabalho e marca dias de folga pessoais via PUT /api/barber/schedule; pausa e dias habilitados continuam com o admin); concluir/cancelar. Vê SÓ os próprios agendamentos.
 - **Admin** `/admin` — Visão geral (KPIs + por barbeiro no mês), Agendamentos (filtros barbeiro/data/status, criar manual, alterar, cancelar, concluir), Barbeiros (CRUD, ativar/desativar, horário semanal + intervalo, dias de folga, login), Serviços (CRUD, ativar), Bloqueios de horário, Lembretes (log + "Processar agora").
 - Login único `/login` → redireciona por papel.
 
@@ -29,4 +29,4 @@ Fuso: `APP_TZ=America/Sao_Paulo` — "hoje" sempre vem do servidor (`GET /api/pu
 users, barbers{schedule[7]{weekday 0=seg, enabled, start, end, break_start, break_end}, days_off[]}, services, appointments, blocks, reminders, clients, cron_runs.
 
 ## Seed (`python seed.py`)
-Admin + 2 barbeiros (Pedro Alves, Lucas Martins; seg–sáb 09–19, pausa 12–13, domingo folga) + 5 serviços. Credenciais em memory/test_credentials.md.
+Admin + 2 barbeiros (Roberto, Kauã; seg–sáb 09–19, pausa 12–13, domingo folga) + 5 serviços. Credenciais em memory/test_credentials.md.

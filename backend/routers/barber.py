@@ -6,8 +6,8 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from lib.auth import require_barber
 from lib.db import db
-from lib.scheduling import cancel_appointment, complete_appointment
-from models.schemas import Appointment, BarberPublic
+from lib.scheduling import cancel_appointment, complete_appointment, to_min, today_str
+from models.schemas import Appointment, BarberPublic, MyScheduleUpdate
 
 router = APIRouter(prefix="/barber", tags=["barber"])
 
@@ -25,6 +25,26 @@ async def profile(user: dict = Depends(require_barber)):
     if not doc:
         raise HTTPException(404, "Barbeiro não encontrado")
     return BarberPublic(**doc)
+
+
+@router.put("/schedule", response_model=BarberPublic)
+async def update_my_schedule(body: MyScheduleUpdate, user: dict = Depends(require_barber)):
+    doc = await db.barbers.find_one({"id": user["barber_id"]}, {"_id": 0})
+    if not doc:
+        raise HTTPException(404, "Barbeiro não encontrado")
+    hours = {h.weekday: h for h in body.hours}
+    schedule = []
+    for day in doc.get("schedule", []):
+        h = hours.get(day["weekday"])
+        if h:
+            if to_min(h.end) <= to_min(h.start):
+                raise HTTPException(400, "O horário de término deve ser depois do início")
+            day = {**day, "start": h.start, "end": h.end}  # enabled/intervalo continuam com o admin
+        schedule.append(day)
+    today = today_str()
+    days_off = sorted({d for d in body.days_off if d >= today} | {d for d in doc.get("days_off", []) if d < today})
+    await db.barbers.update_one({"id": doc["id"]}, {"$set": {"schedule": schedule, "days_off": days_off}})
+    return BarberPublic(**{**doc, "schedule": schedule, "days_off": days_off})
 
 
 @router.get("/appointments", response_model=list[Appointment])

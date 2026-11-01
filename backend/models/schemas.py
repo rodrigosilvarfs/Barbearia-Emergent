@@ -87,6 +87,18 @@ class BarberUpdate(BaseModel):
     password: Optional[str] = Field(None, min_length=6)
 
 
+class DayHours(BaseModel):
+    weekday: int = Field(ge=0, le=6)
+    start: str = Field(pattern=TIME_RE)
+    end: str = Field(pattern=TIME_RE)
+
+
+class MyScheduleUpdate(BaseModel):
+    """What a barber may change on their own agenda: start/end per working day + personal days off."""
+    hours: list[DayHours]
+    days_off: list[Annotated[str, Field(pattern=DATE_RE)]] = Field(default_factory=list)
+
+
 # ---------- services ----------
 class Service(BaseModel):
     id: str = Field(default_factory=new_id)
